@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Tasyakuran</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      position: relative;
+      overflow: auto;
+    }
+
+
+    #background-overlay, #background-overlay-next {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #background-overlay-next {
+      opacity: 0; /* Mulai dengan transparan */
+    }
+
+    .invitation-container {
+      background: rgba(255, 255, 255, 0.1);
+      width: 450px;
+      max-width: 90%;
+      border-radius: 20px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      position: relative;
+      animation: fadeInPop 1.9s ease-out;
+      animation-fill-mode: both;
+      margin: auto;
+    }
+
+    @keyframes fadeInPop {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 2.4rem;
+      margin-bottom: 5px;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .details {
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+
+    .message {
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .host {
+      font-size: 0.9rem;
+      font-style: italic;
+      opacity: 0.7;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding: 10px;
+        align-items: flex-start;
+        height: auto;
+        min-height: 100vh;
+      }
+      
+      .invitation-container {
+        width: 100%;
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+      
+      h2 {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      
+      h3 {
+        font-size: 1.1rem;
+        margin: 10px 0;
+      }
+      
+      .details {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      
+      .message {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      
+      .host {
+        font-size: 0.8rem;
+      }
+    }
+</style>
+</head>
+<body>
+
+  <div id="background-overlay"></div>
+  <div id="background-overlay-next"></div>
+
+  <div id="music-overlay" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;transition:opacity 0.7s;opacity:1;">
+    Tap anywhere to play music
+  </div>
+
+  <section class="invitation-container" role="main" aria-label="Virtual Invitation">
+    <h1>Undangan Tasyakuran</h1>
+    <h1>بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
+    <h3>Assalamualaikum.wr.wb</h3>
+    <h2>Segala puji dan syukur kami panjatkan ke hadirat Allah SWT atas segala rahmat dan karunia-Nya. Dengan penuh rasa syukur, kami bermaksud mengundang Bapak/Ibu/Saudara sekalian untuk hadir dalam acara Tasyakuran & Doa Bersama sebelum keberangkatan kami menunaikan ibadah Haji yang insya Allah akan diselenggarakan pada :</h2>
+    <p class="details">
+      <strong>Tanggal:</strong> Senin, 12 Mei 2025<br />
+      <strong>Waktu:</strong> 12:00 (ba'da dhuhur) ~ Selesai<br />
+      <strong>Tempat:</strong> Perumahan Polomo Graha C.11 (stakin) depan Yonif 751<br />
+    </p>
+    <p class="message">
+     Atas kehadiran dan doa restu yang diberikan, kami ucapkan terima kasih.
+    </p>
+    <h3>
+      Wassalamu'alaikum.wr.wb
+    </h3>
+    <p class="host">Hormat kami, Umar &amp; Dwi Yuliana</p>
+
+  </section>
+
+
+
+  <audio id="bg-audio" loop autoplay playsinline>
+    <source src="sound1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const overlay = document.getElementById('music-overlay');
+    overlay.addEventListener('click', () => {
+      const audio = document.getElementById('bg-audio');
+      audio.play().catch(e => console.warn('Autoplay failed:', e));
+      overlay.style.opacity = '0';
+      setTimeout(() => { overlay.style.display = 'none'; }, 700);
+    });
+  
+    const images = [
+      'bg1.JPG', 'bg2.JPG', 'bg3.JPG', 'bg4.JPG', 'bg5.JPG',
+      'bg6.JPG', 'bg7.JPG', 'bg8.JPG'
+    ];
+
+    let index = 0;
+    const bgOverlay = document.getElementById('background-overlay');
+    const bgOverlayNext = document.getElementById('background-overlay-next');
+
+    bgOverlay.style.backgroundImage = `url('${images[0]}')`;
+
+    function changeBackground() {
+      bgOverlayNext.style.backgroundImage = `url('${images[(index + 1) % images.length]}')`;
+      bgOverlayNext.style.opacity = 1;
+
+      setTimeout(() => {
+        bgOverlay.style.backgroundImage = `url('${images[(index + 1) % images.length]}')`;
+        bgOverlayNext.style.opacity = 0;
+        index = (index + 1) % images.length;
+      }, 1000); 
+    }
+
+    setInterval(changeBackground, 6000);
+  </script>
+
+</body>
+</html>
